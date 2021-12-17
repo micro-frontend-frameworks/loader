@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "api/healthcheck.ts": {
+      "memory": 128,
+      "maxDuration": 5
+    },
+    "api/render.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
+}
