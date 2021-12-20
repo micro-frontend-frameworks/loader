@@ -20,8 +20,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // /render?target=${asPath.replace("/", "")
-
     const deployments = await octokit.rest.repos.listDeployments({
       ...REPO,
     });
@@ -55,6 +53,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         if (response.data?.html) {
           html = response.data.html;
+          break;
         }
       } catch (error) {
         continue;
