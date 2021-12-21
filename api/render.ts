@@ -4,7 +4,7 @@ import { octokit } from "../clients";
 
 const REPO = {
   owner: "micro-frontend-frameworks",
-  repo: "nextjs-build-time-integration-mfes",
+  repo: "nextjs-run-time-integration-mfes",
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
