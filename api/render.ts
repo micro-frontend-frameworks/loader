@@ -2,7 +2,10 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 import axios from "axios";
 import { octokit } from "../clients";
 
-const REPO = { owner: "marcelovicentegc", repo: "microfrontend-apps" };
+const REPO = {
+  owner: "micro-frontend-frameworks",
+  repo: "nextjs-build-time-integration-mfes",
+};
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "GET") {
