@@ -1,5 +1,4 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import axios from "axios";
 import { octokit } from "../clients";
 import { REPO } from "../utils/constants";
 
@@ -25,16 +24,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
   );
 
-  const apps: { pages: { path: string; title: string } }[] = [];
+  const apps: { pages: { path: string; title: string }[] }[] = [];
 
   for await (const branch of appsMetadata.data.tree) {
     if (branch?.url) {
-      const response = await axios.get(branch.url);
+      const response = await octokit.request(`GET ${branch.url}`);
 
       if (response.data.tree) {
         for (const branch of response.data.tree) {
           if (branch.path === "mfe.config.json") {
-            const response = await axios.get(branch.url);
+            const response = await octokit.request(`GET ${branch.url}`);
             const content = Buffer.from(
               response.data.content,
               "base64"
